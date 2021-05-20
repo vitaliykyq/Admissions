@@ -1,13 +1,5 @@
 package edu.coursework.admissions.model;
 
-/*
-    @author:    Masha
-    @project:    Admissions 
-    @class:    Group 
-    @version:    1.0.0 
-    @since:    16.04.2021     
-*/
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,21 +7,17 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-
-public class Group {
-
+@NoArgsConstructor
+public class Faculty {
     private String id;
 
-    private String number;
-    private List<Applicant> applicantList;
+    private String name;
+    private List<Department> departmentList;
     private Examination examination;
 
     private Date created_at;
     private Date modified_at;
     private String description;
-
 }

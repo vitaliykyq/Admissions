@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -35,8 +36,8 @@ public class Certificate {
     private double geography;
     private double history;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
     public Certificate(String id, double ukrainian, double ukrainianLiterature,
@@ -54,6 +55,6 @@ public class Certificate {
         this.chemistry = chemistry;
         this.geography = geography;
         this.history = history;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

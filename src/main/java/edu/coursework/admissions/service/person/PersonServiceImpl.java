@@ -1,4 +1,4 @@
-package edu.coursework.admissions.service.person.impls;
+package edu.coursework.admissions.service.person;
 
 /*
     @author:    Masha
@@ -11,48 +11,47 @@ package edu.coursework.admissions.service.person.impls;
 import edu.coursework.admissions.dao.person.impls.PersonDAOImpl;
 import edu.coursework.admissions.data.FakeData;
 import edu.coursework.admissions.model.Person;
-import edu.coursework.admissions.service.person.interfaces.IPersonService;
+import edu.coursework.admissions.repository.ApplicantRepository;
+import edu.coursework.admissions.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements IPersonService {
 
-    @Autowired
-    FakeData fakeData;
 
     @Autowired
-    PersonDAOImpl dao;
+    PersonRepository repository;
+
 
     @Override
     public Person getById(String id) {
-        return dao.getById(id);
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Person create(Person person) {
-        return dao.create(person);
+        return repository.save(person);
     }
 
     @Override
     public Person update(Person person) {
-        return dao.update(person);
+        person.setModified_at(new Date());
+        return repository.save(person);
     }
 
     @Override
     public Person delete(String id) {
-        return dao.delete(id);
-    }
-
-    @Override
-    public Person save(Person person) {
+        repository.deleteById(id);
         return null;
     }
 
+
     @Override
     public List<Person> getAll() {
-        return fakeData.getPerson();
+        return repository.findAll();
     }
 }

@@ -3,7 +3,7 @@ package edu.coursework.admissions.model;
 /*
     @author:    Masha
     @project:    Admissions 
-    @class:    DocumentsPackage 
+    @class:    Documents
     @version:    1.0.0 
     @since:    16.04.2021     
 */
@@ -13,27 +13,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class DocumentsPackage {
+public class Documents {
 
     private String id;
 
     private Certificate certificate;
-    private Statement statement;
+    private Boolean isApplication;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public DocumentsPackage(String id, Certificate certificate, Statement statement) {
+    public Documents(String id, Certificate certificate, Boolean isApplication, Date created_at) {
         this.id = id;
         this.certificate = certificate;
-        this.statement = statement;
-        this.created_at = LocalDateTime.now();
+        this.isApplication = isApplication;
+        this.created_at = new Date();
     }
 }

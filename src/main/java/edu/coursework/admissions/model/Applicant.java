@@ -11,31 +11,36 @@ package edu.coursework.admissions.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Document(collection = "competition")
 public class Applicant {
 
+    @Id
     private String id;
 
     private Person person;
     private List<Examination> examinationList;
-    private DocumentsPackage documentsPackage;
+    private Documents documents;
+    private Specialty specialty;
+    private String formOfStudy;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Applicant(String id, Person person, List<Examination> examinationList, DocumentsPackage documentsPackage) {
+    public Applicant(String id, Person person, List<Examination> examinationList, Documents documents) {
         this.id = id;
         this.person = person;
         this.examinationList = examinationList;
-        this.documentsPackage = documentsPackage;
-        this.created_at = LocalDateTime.now();
+        this.documents = documents;
+        this.created_at = new Date();
     }
 }

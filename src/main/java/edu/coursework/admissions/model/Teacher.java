@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -28,8 +29,8 @@ public class Teacher {
     private String profession;
     private int workExperience;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
     public Teacher(String id, Person person, List<Examination> availableExamList,
@@ -39,6 +40,6 @@ public class Teacher {
         this.availableExamList = availableExamList;
         this.profession = profession;
         this.workExperience = workExperience;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -28,8 +29,8 @@ public class Person {
     private int age;
     private String gender;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
     public Person(String id, String firstName, String secondName, int age, String gender) {
@@ -38,6 +39,6 @@ public class Person {
         this.secondName = secondName;
         this.age = age;
         this.gender = gender;
-        this.created_at = LocalDateTime.now();
+        this.created_at = new Date();
     }
 }

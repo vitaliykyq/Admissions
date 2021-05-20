@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -64,7 +65,7 @@ public class PersonDAOImpl implements IPersonDAO {
         String id = String.valueOf(this.getAll().stream()
                 .mapToInt(el->Integer.parseInt(el.getId()))
                 .max().orElse(0)+1);
-        person.setCreated_at(LocalDateTime.now());
+        person.setCreated_at(new Date());
         person.setId(id);
         this.getAll().add(person);
         return person;
@@ -77,7 +78,7 @@ public class PersonDAOImpl implements IPersonDAO {
         updatedPerson.setSecondName(person.getSecondName());
         updatedPerson.setAge(person.getAge());
         updatedPerson.setGender(person.getGender());
-        updatedPerson.setModified_at(LocalDateTime.now());
+        updatedPerson.setModified_at(new Date());
 
         return updatedPerson;
 
