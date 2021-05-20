@@ -20,7 +20,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "competition")
+@Document(collection = "Applicant")
 public class Applicant {
 
     @Id

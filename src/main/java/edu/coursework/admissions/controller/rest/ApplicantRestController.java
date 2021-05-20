@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/*http://localhost:8080/api/person/get/all*/
 @RestController
 @RequestMapping("api/applicant")
 public class ApplicantRestController {
