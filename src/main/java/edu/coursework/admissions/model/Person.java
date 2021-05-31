@@ -28,7 +28,7 @@ public class Person {
 
     private String firstName;
     private String secondName;
-    private int age;
+    private int year;
     private String gender;
 
     private Date created_at;
@@ -39,7 +39,7 @@ public class Person {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
-        this.age = age;
+        this.year = age;
         this.gender = gender;
         this.created_at = new Date();
     }

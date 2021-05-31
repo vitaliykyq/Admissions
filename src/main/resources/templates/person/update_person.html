@@ -1,0 +1,50 @@
+<!--
+  ~ /**
+  ~  * Created by IntelliJ IDEA.
+  ~  * C:/Users/Acer/Desktop/uchoba/sportinfrastructure2/src/main/resources/templates/update_sportClub.html
+  ~  *
+  ~  * @Autor: SoniaKK
+  ~  * @DateTime: 06.04.21, 12:04
+  ~  * @Version update_sportClub.html : 1.0
+  ~  */
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Management System</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<div class="updateForm">
+    <form action="#" th:action="@{/ui/persons/update}" th:object="${person}"
+          method="POST" >
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+        <label>First Name</label>
+        <input type="text" th:field="*{firstName}" placeholder=" Name" required>
+        <label>Second Name</label>
+        <input type="text" th:field="*{secondName}" placeholder=" SName" required>
+        <label>Year</label>
+        <input type="number" th:field="*{year}"  >
+        <label>SportCub:</label>
+
+        <select th:field="*{gender}">
+            <option th:value="Чоловіча" th:text="Чоловіча" />
+            <option th:value="Жіноча" th:text="Жіноча" />
+        </select>
+        <button type="submit" class="btn1" >DONE</button>
+    </form>
+</div>
+    <br><br><br><br><br><br><br><br><br><br>
+    <hr>
+
+</div>
+
+</body>
+</html>

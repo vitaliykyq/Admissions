@@ -76,7 +76,6 @@ public class PersonDAOImpl implements IPersonDAO {
         Person updatedPerson = this.getById(person.getId());
         updatedPerson.setFirstName(person.getFirstName());
         updatedPerson.setSecondName(person.getSecondName());
-        updatedPerson.setAge(person.getAge());
         updatedPerson.setGender(person.getGender());
         updatedPerson.setModified_at(new Date());
 
