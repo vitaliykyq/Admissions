@@ -27,7 +27,7 @@ public class University {
     private String id;
 
     private List<Specialty> specialtyList;
-    private List<String> faculty;
+    private List<Faculty> faculties;
     private String address;
     private String phoneNumber;
 
@@ -35,13 +35,4 @@ public class University {
     private Date modified_at;
     private String description;
 
-    public University(String id, List<Specialty> specialtyList,
-                      List<String> faculty, String address, String phoneNumber) {
-        this.id = id;
-        this.specialtyList = specialtyList;
-        this.faculty = faculty;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.created_at = new Date();
-    }
 }

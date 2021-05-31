@@ -11,8 +11,13 @@
 
 package edu.coursework.admissions.controller.ui;
 
-import edu.coursework.admissions.model.Person;
+import edu.coursework.admissions.model.*;
+import edu.coursework.admissions.service.department.DepartmentServiceImpl;
+import edu.coursework.admissions.service.documents.DocumentsServiceImpl;
+import edu.coursework.admissions.service.examination.ExaminationServiceImpl;
+import edu.coursework.admissions.service.faculty.FacultyServiceImpl;
 import edu.coursework.admissions.service.person.PersonServiceImpl;
+import edu.coursework.admissions.service.specialty.SpecialtyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,47 +25,57 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/ui/persons")
+@RequestMapping("/ui/faculties")
 @Controller
 public class FacultyUiController {
 
     @Autowired
-    PersonServiceImpl service;
+    FacultyServiceImpl service;
+    @Autowired
+    ExaminationServiceImpl serviceExamination;
+    @Autowired
+    DepartmentServiceImpl serviceDepartment;
 
 
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
-        List<Person> persons = service.getAll();
-        model.addAttribute("person",persons);
+        List<Faculty> faculties = service.getAll();
+        model.addAttribute("faculty",faculties);
         return "person/person-page";
     }
 
-    @GetMapping("/showNewPersonForm")
-    public String showNewStadiumForm(Model model) {
+    @GetMapping("/showNewFacultyForm")
+    public String showNewFacultyForm(Model model) {
         // create model attribute to bind form data
-        Person person = new Person();
-        model.addAttribute("person",person);
-
-        return "person/new_person";
+        Faculty faculty = new Faculty();
+        model.addAttribute("faculty",faculty);
+        List<Examination> examinations = serviceExamination.getAll();
+        model.addAttribute("examination",examinations);
+        List<Department> departments = serviceDepartment.getAll();
+        model.addAttribute("department",departments);
+        return "faculty/new_faculty";
     }
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
-        Person person = service.getById(id);
-        model.addAttribute("person",person);
-
-        return "person/update_person";
+        Faculty faculty = service.getById(id);
+        model.addAttribute("faculty",faculty);
+        List<Examination> examinations = serviceExamination.getAll();
+        model.addAttribute("examination",examinations);
+        List<Department> departments = serviceDepartment.getAll();
+        model.addAttribute("department",departments);
+        return "faculty/update_faculty";
     }
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("persons") @RequestBody Person person) {
-        service.update(person);
-        return "redirect:/ui/persons/get/all";
+    public String update(Model model, @ModelAttribute("faculty") @RequestBody Faculty faculty) {
+        service.update(faculty);
+        return "redirect:/ui/faculties/get/all";
     }
     @PostMapping("/add")
-    public String addTeacher(Model model, @ModelAttribute("persons") @RequestBody Person person) {
+    public String addTeacher(Model model, @ModelAttribute("faculty") @RequestBody Faculty faculty) {
 
-            model.addAttribute("persons",service.create(person));
-            return "redirect:/ui/persons/get/all";
+            model.addAttribute("persons",service.create(faculty));
+            return "redirect:/ui/faculties/get/all";
 
     }
 
@@ -71,7 +86,7 @@ public class FacultyUiController {
 
         // call delete employee method
         this.service.delete(id);
-        return "redirect:/ui/persons/get/all";
+        return "redirect:/ui/faculties/get/all";
     }
 }
 

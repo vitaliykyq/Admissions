@@ -11,8 +11,12 @@
 
 package edu.coursework.admissions.controller.ui;
 
-import edu.coursework.admissions.model.Person;
+import edu.coursework.admissions.model.*;
+import edu.coursework.admissions.service.certificate.CertificateServiceImpl;
+import edu.coursework.admissions.service.documents.DocumentsServiceImpl;
+import edu.coursework.admissions.service.examination.ExaminationServiceImpl;
 import edu.coursework.admissions.service.person.PersonServiceImpl;
+import edu.coursework.admissions.service.specialty.SpecialtyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,47 +24,44 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/ui/persons")
+@RequestMapping("/ui/certificates")
 @Controller
 public class CertificateUiController {
 
     @Autowired
-    PersonServiceImpl service;
-
+    CertificateServiceImpl service;
 
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
-        List<Person> persons = service.getAll();
-        model.addAttribute("person",persons);
-        return "person/person-page";
+        List<Certificate> certificates = service.getAll();
+        model.addAttribute("certificate",certificates);
+        return "certificate/certificate-page";
     }
 
-    @GetMapping("/showNewPersonForm")
-    public String showNewStadiumForm(Model model) {
+    @GetMapping("/showNewCertificatesForm")
+    public String showNewCertificatesForm(Model model) {
         // create model attribute to bind form data
-        Person person = new Person();
-        model.addAttribute("person",person);
-
-        return "person/new_person";
+        Certificate certificate = new Certificate();
+        model.addAttribute("certificate",certificate);
+        return "certificate/new_certificate";
     }
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
-        Person person = service.getById(id);
-        model.addAttribute("person",person);
-
+        Certificate certificate = service.getById(id);
+        model.addAttribute("certificate",certificate);
         return "person/update_person";
     }
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("persons") @RequestBody Person person) {
-        service.update(person);
-        return "redirect:/ui/persons/get/all";
+    public String update(Model model, @ModelAttribute("certificate") @RequestBody Certificate certificate) {
+        service.update(certificate);
+        return "redirect:/ui/certificates/get/all";
     }
     @PostMapping("/add")
-    public String addTeacher(Model model, @ModelAttribute("persons") @RequestBody Person person) {
+    public String addTeacher(Model model, @ModelAttribute("certificate") @RequestBody Certificate certificate) {
 
-            model.addAttribute("persons",service.create(person));
-            return "redirect:/ui/persons/get/all";
+            model.addAttribute("persons",service.create(certificate));
+            return "redirect:/ui/certificates/get/all";
 
     }
 
