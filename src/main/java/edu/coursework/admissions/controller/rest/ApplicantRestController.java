@@ -25,7 +25,7 @@ public class ApplicantRestController {
     ApplicantServiceImpl service;
 
     @GetMapping("/get/all")
-    public List<Applicant> getPerson(){
+    public List<Applicant> getAll(){
         return service.getAll() ;
     }
 
@@ -40,12 +40,12 @@ public class ApplicantRestController {
         return service.delete(id);
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Applicant create(@RequestBody Applicant applicant){
         return service.create(applicant);
     }
 
-    @PostMapping ("/update/")
+    @PostMapping ("/update")
     public Applicant update(@RequestBody Applicant applicant){
         return service.update(applicant);
     }
