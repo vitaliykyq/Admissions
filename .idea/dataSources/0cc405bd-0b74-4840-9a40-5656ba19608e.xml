@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.20">
+    <root id="1">
+      <ServerVersion>4.4.4</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="admin"/>
+    <schema id="3" parent="1" name="admissions"/>
+    <schema id="4" parent="1" name="config"/>
+    <schema id="5" parent="1" name="hotel"/>
+    <schema id="6" parent="1" name="local"/>
+    <schema id="7" parent="1" name="railwayStation"/>
+    <schema id="8" parent="1" name="sportInfrastucture"/>
+    <schema id="9" parent="1" name="zoo"/>
+    <table id="10" parent="3" name="Applicant"/>
+    <table id="11" parent="3" name="Certificate"/>
+    <table id="12" parent="3" name="Department"/>
+    <table id="13" parent="3" name="Documents"/>
+    <table id="14" parent="3" name="Examination"/>
+    <table id="15" parent="3" name="Faculty"/>
+    <table id="16" parent="3" name="Group"/>
+    <table id="17" parent="3" name="Person"/>
+    <table id="18" parent="3" name="Specialty"/>
+    <table id="19" parent="3" name="Teacher"/>
+    <table id="20" parent="3" name="University"/>
+  </database-model>
+</dataSource>
