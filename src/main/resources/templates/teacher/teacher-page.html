@@ -1,0 +1,46 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Person List</title>
+
+</head>
+<body>
+
+<div >
+    <a class="add" th:href = "@{/ui/persons/showNewPersonForm}"> +</a>
+</div>
+
+<div  ><table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Year</th>
+            <th>Gender</th>
+           <!-- <th>Created at</th>
+            <th>Updated at</th>-->
+            <th>OPTIONS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="persons: ${person}">
+            <td th:text="${persons.id}"></td>
+            <td th:text="${persons.firstName}"></td>
+            <td th:text="${persons.secondName}"></td>
+            <td th:text="${persons.year}"></td>
+            <td th:text="${persons.gender}"></td>
+            <td> <a th:href="@{/ui/persons/showUpdateForm/{id}(id=${persons.id})}"> <i class="bi bi-pencil" style="font-size: 2rem;"></i></a>
+                <a th:href="@{/ui/persons/delete/{id}(id=${persons.id})}"> <i class="bi bi-trash" style="font-size: 2rem;"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br><br><br><br><br>
+</body>
+
+</html>

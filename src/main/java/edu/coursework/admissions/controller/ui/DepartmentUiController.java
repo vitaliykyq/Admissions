@@ -18,12 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RequestMapping("/ui/persons")
 @Controller
-public class PersonUiController {
+public class DepartmentUiController {
 
     @Autowired
     PersonServiceImpl service;

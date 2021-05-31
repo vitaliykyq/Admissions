@@ -1,6 +1,9 @@
 package edu.coursework.admissions.controller.ui;
 
+import edu.coursework.admissions.model.Examination;
 import edu.coursework.admissions.model.Person;
+import edu.coursework.admissions.model.Teacher;
+import edu.coursework.admissions.service.examination.ExaminationServiceImpl;
 import edu.coursework.admissions.service.person.PersonServiceImpl;
 import edu.coursework.admissions.service.teacher.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,48 +20,57 @@ public class TeacherUiController {
     @Autowired
     TeacherServiceImpl service;
 
+    @Autowired
+    PersonServiceImpl servicePerson;
+
+    @Autowired
+    ExaminationServiceImpl serviceExamination;
+
     @RequestMapping("/get/all")
     public String showAll(Model model){
-        List<Person> persons = service.getAll();
-        model.addAttribute("person",persons);
-        return "person/person-page";
+        List<Teacher> teachers = service.getAll();
+        model.addAttribute("teacher",teachers);
+        return "teacher/teacher-page";
     }
 
-    @GetMapping("/showNewPersonForm")
-    public String showNewStadiumForm(Model model) {
+    @GetMapping("/showNewTeacherForm")
+    public String showNewTeachermForm(Model model) {
         // create model attribute to bind form data
-        Person person = new Person();
+        Teacher teacher = new Teacher();
+        model.addAttribute("teacher",teacher);
+        List<Person> person = servicePerson.getAll();
         model.addAttribute("person",person);
-
-        return "person/new_person";
+        List<Examination> examinations = serviceExamination.getAll();
+        model.addAttribute("examinations",examinations);
+        return "teacher/new_teacher";
     }
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable(value="id") String id, Model model){
-        Person person = service.getById(id);
+        Teacher teacher = service.getById(id);
+        model.addAttribute("teacher",teacher);
+        List<Person> person = servicePerson.getAll();
         model.addAttribute("person",person);
-
-        return "person/update_person";
+        List<Examination> examinations = serviceExamination.getAll();
+        model.addAttribute("examinations",examinations);
+        return "teacher/update_teacher";
     }
     @PostMapping("/update")
-    public String update(Model model, @ModelAttribute("persons") @RequestBody Person person) {
-        service.update(person);
-        return "redirect:/ui/persons/get/all";
+    public String update(Model model, @ModelAttribute("teacher") @RequestBody Teacher teacher) {
+        service.update(teacher);
+        return "redirect:/ui/teachers/get/all";
     }
     @PostMapping("/add")
-    public String addStadium(Model model, @ModelAttribute("persons") @RequestBody Person person) {
+    public String addTeacher(Model model, @ModelAttribute("teacher") @RequestBody Teacher teacher) {
 
-        model.addAttribute("persons",service.create(person));
-        return "redirect:/ui/persons/get/all";
-
+        model.addAttribute("teacher",service.create(teacher));
+        return "redirect:/ui/teachers/get/all";
     }
-
-
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable (value = "id") String id) {
 
         // call delete employee method
         this.service.delete(id);
-        return "redirect:/ui/persons/get/all";
+        return "redirect:/ui/teachers/get/all";
     }
 }
