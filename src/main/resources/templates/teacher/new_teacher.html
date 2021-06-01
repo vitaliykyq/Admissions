@@ -1,50 +1,95 @@
-<!--
-  ~ /**
-  ~  * Created by IntelliJ IDEA.
-  ~  * C:/Users/Acer/Desktop/uchoba/sportinfrastructure2/src/main/resources/templates/update_sportClub.html
-  ~  *
-  ~  * @Autor: SoniaKK
-  ~  * @DateTime: 06.04.21, 12:04
-  ~  * @Version update_sportClub.html : 1.0
-  ~  */
-  -->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Teacher Management System</title>
+    <title>Add Teacher</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="../style.css" rel="stylesheet">
 </head>
-<body>
+<body style="text-align: center" onclick="checkedTable()">
+<div>
+    <div>
+        <form action="#" th:action="@{/ui/teachers/add}" th:object="${teacher}"
+              method="POST">
+            <h1>Add Teacher</h1>
+
+            <table class="edit">
+                <tr>
+                    <td><label>Person</label></td>
+                    <td>
+                        <div class="input">
+                            <select th:field="*{person.id}" onclick="checkedInput()">
+                                <option th:each="personIdList: ${personIdList}"
+                                        th:value="${personIdList.id}" th:text="${personIdList.name}">ID
+                                </option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label>Available exam list</label></td>
+                    <td>
+                        <div class="input">
+                            <select multiple th:field="*{person.id}" onclick="checkedInput()">
+                                <option th:each="personIdList: ${personIdList}"
+                                        th:value="${personIdList.id}" th:text="${personIdList.name}">ID
+                                </option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Profession</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{profession}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Work experience</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{workExperience}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <div class="control">
+                <div class="buttonBack">
+                    <a th:href = "@{/ui/teachers/get/all}" class="containerButton">Back</a>
+                </div>
+                <button type="submit">Add</button>
+            </div>
+        </form>
 
 
-<div class="updateForm">
-    <form action="#" th:action="@{/ui/teachers/update}" th:object="${teacher}"
-          method="POST" >
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{id}" />
-        <label>First Name</label>
-        <input type="text" th:field="*{firstName}" placeholder=" Name" required>
-        <label>Second Name</label>
-        <input type="text" th:field="*{secondName}" placeholder=" SName" required>
-        <label>Year</label>
-        <input type="number" th:field="*{year}"  >
-        <label>SportCub:</label>
-
-        <select th:field="*{gender}">
-            <option th:value="Чоловіча" th:text="Чоловіча" />
-            <option th:value="Жіноча" th:text="Жіноча" />
-        </select>
-        <button type="submit" class="btn1" >DONE</button>
-    </form>
+    </div>
 </div>
-    <br><br><br><br><br><br><br><br><br><br>
-    <hr>
-
-</div>
-
 </body>
+<script>
+    let table = document.querySelector(".edit");
+    let check = false;
+
+    function checkedTable(){
+        table.setAttribute("class", "edit");
+        if(check){
+            table.setAttribute("class", "edit border");
+        }
+        check = false;
+    }
+
+    function  checkedInput(){
+        check = true;
+    }
+</script>
+
 </html>

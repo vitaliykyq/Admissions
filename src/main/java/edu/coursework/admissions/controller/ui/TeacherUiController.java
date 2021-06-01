@@ -38,8 +38,8 @@ public class TeacherUiController {
         // create model attribute to bind form data
         Teacher teacher = new Teacher();
         model.addAttribute("teacher",teacher);
-        List<Person> person = servicePerson.getAll();
-        model.addAttribute("person",person);
+        List<Person> personIdList = servicePerson.getAll();
+        model.addAttribute("personIdList",personIdList);
         List<Examination> examinations = serviceExamination.getAll();
         model.addAttribute("examinations",examinations);
         return "teacher/new_teacher";
@@ -48,8 +48,8 @@ public class TeacherUiController {
     public String showUpdateForm(@PathVariable(value="id") String id, Model model){
         Teacher teacher = service.getById(id);
         model.addAttribute("teacher",teacher);
-        List<Person> person = servicePerson.getAll();
-        model.addAttribute("person",person);
+        List<Person> personIdList = servicePerson.getAll();
+        model.addAttribute("personIdList",personIdList);
         List<Examination> examinations = serviceExamination.getAll();
         model.addAttribute("examinations",examinations);
         return "teacher/update_teacher";
