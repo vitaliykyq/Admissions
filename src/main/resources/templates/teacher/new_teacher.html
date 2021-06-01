@@ -18,14 +18,13 @@
                     <td><label>Person</label></td>
                     <td>
                         <div class="input">
-                            <select th:field="*{person.id}" onclick="checkedInput()">
-                                <option th:each="personIdList: ${personIdList}"
-                                        th:value="${personIdList.id}" th:text="${personIdList.name}">ID
-                                </option>
-                            </select>
+                                <select th:field="*{person.id}" onclick="checkedInput()">
+                                    <option th:each="personIdList: ${personIdList}"
+                                            th:value="${personIdList.id}" th:text="${personIdList.firstName}">ID
+                                    </option>
+                                </select>
                             <div class="border-line"></div>
                         </div>
-
                     </td>
                 </tr>
 
@@ -33,9 +32,9 @@
                     <td><label>Available exam list</label></td>
                     <td>
                         <div class="input">
-                            <select multiple th:field="*{person.id}" onclick="checkedInput()">
-                                <option th:each="personIdList: ${personIdList}"
-                                        th:value="${personIdList.id}" th:text="${personIdList.name}">ID
+                            <select multiple th:field="*{availableExamList}" onclick="checkedInput()">
+                                <option th:each="examinationIdList: ${examinationIdList}"
+                                        th:value="${examinationIdList.id}" th:text="${examinationIdList.name}">
                                 </option>
                             </select>
                             <div class="border-line"></div>

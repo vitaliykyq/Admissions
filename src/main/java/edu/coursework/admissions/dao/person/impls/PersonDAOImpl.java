@@ -54,7 +54,7 @@ public class PersonDAOImpl implements IPersonDAO {
         return fakeData.getPerson();
     }*/
 
-    @Override
+    /*@Override
     public Person getById(String id) {
         return this.getAll().stream()
                 .filter(person -> person.getId().equals(id))
@@ -98,5 +98,5 @@ public class PersonDAOImpl implements IPersonDAO {
     @Override
     public List<Person> getAll() {
         return fakeData.getPerson();
-    }
+    }*/
 }

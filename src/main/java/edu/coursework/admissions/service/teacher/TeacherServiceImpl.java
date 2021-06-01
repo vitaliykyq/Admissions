@@ -18,13 +18,18 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public Teacher create(Teacher teacher) {
+        teacher.setCreated_at(new Date());
         return repository.save(teacher);
     }
 
     @Override
     public Teacher update(Teacher teacher) {
         teacher.setModified_at(new Date());
-        return repository.save(teacher);
+        teacher.setCreated_at(repository.findById(teacher.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(teacher);
+        return teacher;
     }
 
     @Override

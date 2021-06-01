@@ -23,7 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 @Document(collection = "Teacher")
 public class Teacher {
-@Id
+    @Id
     private String id;
 
     private Person person;
@@ -34,14 +34,4 @@ public class Teacher {
     private Date created_at;
     private Date modified_at;
     private String description;
-
-    public Teacher(String id, Person person, List<Examination> availableExamList,
-                   String profession, int workExperience) {
-        this.id = id;
-        this.person = person;
-        this.availableExamList = availableExamList;
-        this.profession = profession;
-        this.workExperience = workExperience;
-        this.created_at = new Date();
-    }
 }

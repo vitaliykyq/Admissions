@@ -12,11 +12,8 @@
 package edu.coursework.admissions.controller.ui;
 
 import edu.coursework.admissions.model.Examination;
-import edu.coursework.admissions.model.Person;
-import edu.coursework.admissions.model.Specialty;
+import edu.coursework.admissions.model.Teacher;
 import edu.coursework.admissions.service.examination.ExaminationServiceImpl;
-import edu.coursework.admissions.service.person.PersonServiceImpl;
-import edu.coursework.admissions.service.specialty.SpecialtyServiceImpl;
 import edu.coursework.admissions.service.teacher.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +28,9 @@ public class ExaminationUiController {
 
     @Autowired
     ExaminationServiceImpl service;
-    @Autowired
-    SpecialtyServiceImpl serviceSpecialty;
 
+    @Autowired
+    TeacherServiceImpl teacherService;
 
     @RequestMapping("/get/all")
     public String showAll(Model model){
@@ -42,13 +39,13 @@ public class ExaminationUiController {
         return "examination/examination-page";
     }
 
-    @GetMapping("/showNewPersonForm")
-    public String showNewStadiumForm(Model model) {
+    @GetMapping("/showNewExaminationForm")
+    public String showNewExaminationForm(Model model) {
         // create model attribute to bind form data
         Examination examination = new Examination();
         model.addAttribute("examination",examination);
-        List<Specialty> specialties = serviceSpecialty.getAll();
-        model.addAttribute("specialty",specialties);
+        List<Teacher> teacherIdList = teacherService.getAll();
+        model.addAttribute("teacherIdList",teacherIdList);
 
         return "examination/new_examination";
     }
@@ -56,8 +53,9 @@ public class ExaminationUiController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Examination examination = service.getById(id);
         model.addAttribute("examination",examination);
-        List<Specialty> specialties = serviceSpecialty.getAll();
-        model.addAttribute("specialty",specialties);
+
+        List<Teacher> teacherIdList = teacherService.getAll();
+        model.addAttribute("teacherIdList",teacherIdList);
 
         return "examination/update_examination";
     }
@@ -69,12 +67,9 @@ public class ExaminationUiController {
     @PostMapping("/add")
     public String addTeacher(Model model, @ModelAttribute("examination") @RequestBody Examination examination) {
 
-            model.addAttribute("examination",service.create(examination));
-            return "redirect:/ui/examinations/get/all";
-
+        model.addAttribute("examination",service.create(examination));
+        return "redirect:/ui/examinations/get/all";
     }
-
-
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable (value = "id") String id) {

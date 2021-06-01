@@ -14,10 +14,10 @@ import java.util.List;
 
 public interface IPersonDAO {
 
-    Person getById(String id);
+    /*Person getById(String id);
     Person create(Person person);
     Person update(Person person);
     Person delete(String id);
     Person save(Person person);
-    List<Person> getAll();
+    List<Person> getAll();*/
 }

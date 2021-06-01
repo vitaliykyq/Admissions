@@ -20,7 +20,7 @@ import java.util.UUID;
 @Repository
 public class FakeData {
 
-    private List<Person> person = new ArrayList<>(
+    /*private List<Person> person = new ArrayList<>(
             Arrays.asList(
                     new Person("1", "Boris", "Dut", 37, "Male"),
                     new Person("2", "Nikit", "Bon", 27, "Male"),
@@ -39,5 +39,5 @@ public class FakeData {
 
     public void setPerson(List<Person> person) {
         this.person = person;
-    }
+    }*/
 }

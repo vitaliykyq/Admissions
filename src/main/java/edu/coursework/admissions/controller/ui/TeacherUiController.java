@@ -29,19 +29,19 @@ public class TeacherUiController {
     @RequestMapping("/get/all")
     public String showAll(Model model){
         List<Teacher> teachers = service.getAll();
-        model.addAttribute("teacher",teachers);
+        model.addAttribute("teachers",teachers);
         return "teacher/teacher-page";
     }
 
     @GetMapping("/showNewTeacherForm")
-    public String showNewTeachermForm(Model model) {
+    public String showNewTeacherForm(Model model) {
         // create model attribute to bind form data
         Teacher teacher = new Teacher();
         model.addAttribute("teacher",teacher);
         List<Person> personIdList = servicePerson.getAll();
-        model.addAttribute("personIdList",personIdList);
-        List<Examination> examinations = serviceExamination.getAll();
-        model.addAttribute("examinations",examinations);
+        model.addAttribute("personIdList", personIdList);
+        List<Examination> examinationIdList = serviceExamination.getAll();
+        model.addAttribute("examinationIdList", examinationIdList);
         return "teacher/new_teacher";
     }
     @GetMapping("/showUpdateForm/{id}")
@@ -49,7 +49,7 @@ public class TeacherUiController {
         Teacher teacher = service.getById(id);
         model.addAttribute("teacher",teacher);
         List<Person> personIdList = servicePerson.getAll();
-        model.addAttribute("personIdList",personIdList);
+        model.addAttribute("personIdList", personIdList);
         List<Examination> examinations = serviceExamination.getAll();
         model.addAttribute("examinations",examinations);
         return "teacher/update_teacher";
@@ -61,7 +61,7 @@ public class TeacherUiController {
     }
     @PostMapping("/add")
     public String addTeacher(Model model, @ModelAttribute("teacher") @RequestBody Teacher teacher) {
-
+        teacher.setPerson(servicePerson.getById(teacher.getPerson().getId()));
         model.addAttribute("teacher",service.create(teacher));
         return "redirect:/ui/teachers/get/all";
     }

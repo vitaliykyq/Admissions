@@ -20,13 +20,18 @@ public class ExaminationServiceImpl implements IExaminationService {
 
     @Override
     public Examination create(Examination examination) {
+        examination.setCreated_at(new Date());
         return repository.save(examination);
     }
 
     @Override
     public Examination update(Examination examination) {
         examination.setModified_at(new Date());
-        return repository.save(examination);
+        examination.setCreated_at(repository.findById(examination.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(examination);
+        return examination;
     }
 
     @Override

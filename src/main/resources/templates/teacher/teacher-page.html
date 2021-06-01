@@ -95,7 +95,7 @@
         </thead>
 
         <tbody>
-        <tr th:each="teachers: ${teacher}">
+        <tr th:each="teachers: ${teachers}">
             <td th:text="${teachers.id}"></td>
             <td th:text="${teachers.person}"></td>
             <td th:text="${teachers.availableExamList}"></td>
@@ -107,7 +107,7 @@
                 <a  th:href="@{/ui/teachers/delete/{id}(id=${teachers.id})}">
                     <button class="first">Delete</button>
                 </a>
-                <a th:href="@{/ui/teachers/showUpdateForm/{id}(id=${teachers.id})}">
+                <a th:href="@{/ui/teachers/showNewTeacherForm/{id}(id=${teachers.id})}">
                     <button class="last">Edit</button>
                 </a>
             </td>
@@ -118,7 +118,7 @@
     <br>
 
     <div style="text-align: center">
-        <a th:href = "@{/ui/teachers/showNewForm}" class="containerButton">Add</a>
+        <a th:href = "@{/ui/teachers/showNewTeacherForm}" class="containerButton">Add</a>
     </div>
 </div>
 </body>

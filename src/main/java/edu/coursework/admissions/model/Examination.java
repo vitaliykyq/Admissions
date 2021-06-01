@@ -34,14 +34,4 @@ public class Examination {
     private Date created_at;
     private Date modified_at;
     private String description;
-
-    public Examination(String id, String name, List<Teacher> teacherList,
-                       double examDuration, String address) {
-        this.id = id;
-        this.name = name;
-        this.teacherList = teacherList;
-        this.examDuration = examDuration;
-        this.address = address;
-        this.created_at = new Date();
-    }
 }

@@ -34,13 +34,4 @@ public class Person {
     private Date created_at;
     private Date modified_at;
     private String description;
-
-    public Person(String id, String firstName, String secondName, int age, String gender) {
-        this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.year = age;
-        this.gender = gender;
-        this.created_at = new Date();
-    }
 }
