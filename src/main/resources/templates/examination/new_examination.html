@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Examination</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body style="text-align: center" onclick="checkedTable()">
+<div>
+    <div>
+        <form action="#" th:action="@{/ui/examinations/add}" th:object="${examination}"
+              method="POST">
+            <h1>Add Examination</h1>
+
+            <table class="edit">
+                <tr>
+                    <td><label>Name</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{name}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label>Teacher List</label></td>
+                    <td>
+                        <div class="input">
+                            <select multiple th:field="*{teacherList}" onclick="checkedInput()">
+                                <option th:each="teacherIdList: ${teacherIdList}"
+                                        th:value="${teacherIdList.id}" th:text="${teacherIdList.profession}">
+                                </option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Exam Duration</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{examDuration}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Work experience</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{address}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <div class="control">
+                <div class="buttonBack">
+                    <a th:href = "@{/ui/teachers/get/all}" class="containerButton">Back</a>
+                </div>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+
+        <br>
+    </div>
+</div>
+</body>
+<script>
+    let table = document.querySelector(".edit");
+    let check = false;
+
+    function checkedTable(){
+        table.setAttribute("class", "edit");
+        if(check){
+            table.setAttribute("class", "edit border");
+        }
+        check = false;
+    }
+
+    function  checkedInput(){
+        check = true;
+    }
+</script>
+
+</html>
