@@ -1,46 +1,132 @@
-
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Person List</title>
-
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
 
-<div >
-    <a class="add" th:href = "@{/ui/persons/showNewPersonForm}"> +</a>
-</div>
 
-<div  ><table>
+<button class="menu-toggle hamburger"></button>
+<nav>
+    <ul class="menu">
+        <li
+                data-text="Applicant"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Applicant
+        </li>
+        <li
+                data-text="Certificate"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Certificate
+        </li>
+        <li
+                data-text="Department"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Department
+        </li>
+        <li
+                data-text="Examination"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Examination
+        </li>
+        <li
+                data-text="Faculty"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Faculty
+        </li>
+        <li
+                data-text="Group"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Group
+        </li>
+        <li
+                data-text="Person"
+                th:href = "@{/ui/persons/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Person
+        </li>
+        <li
+                data-text="Specialty"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Specialty
+        </li>
+        <li
+                data-text="Teacher"
+                th:href = "@{/ui/teachers/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Teacher
+        </li>
+        <li
+                data-text="University"
+                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                onclick="window.location.href = this.getAttribute('href')">
+            University
+        </li>
+    </ul>
+</nav>
+
+
+<div class="container">
+    <table class="responsive-table">
+        <caption>List Person</caption>
         <thead>
+
         <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>Year</th>
-            <th>Gender</th>
-           <!-- <th>Created at</th>
-            <th>Updated at</th>-->
-            <th>OPTIONS</th>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Second Name</th>
+            <th scope="col">Year</th>
+            <th scope="col">Gender</th>
+            <th scope="col">CreatedAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col" colspan="2">OPTIONS</th>
         </tr>
+
+
         </thead>
+
         <tbody>
         <tr th:each="persons: ${person}">
-            <td th:text="${persons.id}"></td>
+            <td th:text="${persons.id}">ID</td>
             <td th:text="${persons.firstName}"></td>
             <td th:text="${persons.secondName}"></td>
             <td th:text="${persons.year}"></td>
             <td th:text="${persons.gender}"></td>
-            <td> <a th:href="@{/ui/persons/showUpdateForm/{id}(id=${persons.id})}"> <i class="bi bi-pencil" style="font-size: 2rem;"></i></a>
-                <a th:href="@{/ui/persons/delete/{id}(id=${persons.id})}"> <i class="bi bi-trash" style="font-size: 2rem;"></i></a>
+            <td th:text="${persons.created_at}"></td>
+            <td th:text="${persons.modified_at}"></td>
+            <td class="options">
+                <a th:href="@{/ui/persons/delete/{id}(id=${persons.id})}">
+                    <button>Delete</button>
+                </a>
+                <a th:href="@{/ui/persons/showUpdateForm/{id}(id=${persons.id})}">
+                    <button>Edit</button>
+                </a>
             </td>
         </tr>
         </tbody>
+
     </table>
+
+    <br>
+
+    <div style="text-align: center">
+        <a th:href = "@{/ui/persons/showNewPersonForm}" class="containerButton">Add</a>
+    </div>
 </div>
-
-<br><br><br><br><br>
 </body>
-
+<script>
+    $('button').on('click', function(){
+        $('body').toggleClass('open');
+    });
+</script>
 </html>
