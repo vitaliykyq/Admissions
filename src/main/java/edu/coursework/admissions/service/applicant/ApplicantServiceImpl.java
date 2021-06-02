@@ -60,7 +60,7 @@ public class ApplicantServiceImpl implements IApplicantService {
     public Object getAmountOfApplicantsByYear(int year) {
 
         Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("year").is(year)),
+                Aggregation.match(Criteria.where("person.year").is(year)),
                 Aggregation.group(fields().and("year")).count().as("numberOfApplicantsBornThatYear"));
 
         return mongoTemplate.aggregate(aggregation, "applicant", Object.class).getMappedResults();
