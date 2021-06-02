@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.teacher;
 
+import edu.coursework.admissions.model.Specialty;
 import edu.coursework.admissions.model.Teacher;
 import edu.coursework.admissions.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,12 @@ public class TeacherServiceImpl implements ITeacherService {
     @Override
     public List<Teacher> getAll() {
         return repository.findAll();
+    }
+
+    public List<Teacher> getByProfession(String profesion){
+        return repository.findAllByProfessionIs(profesion);
+    }
+    public List<Teacher> getByWorkExperience(int experience){
+        return repository.findAllByWorkExperienceIs(experience);
     }
 }

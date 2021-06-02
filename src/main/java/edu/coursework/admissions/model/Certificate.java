@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Certificate")
+@Document(collection = "certificate")
 public class Certificate {
 @Id
     private String id;

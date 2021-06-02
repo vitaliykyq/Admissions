@@ -50,5 +50,23 @@ public class ApplicantRestController {
         return service.update(applicant);
     }
 
+    @GetMapping("/get/byYear/{year}")
+    public Object getApplicantsByYear(@PathVariable("year") int year){
+        return service.getApplicantsByYear(year) ;
+    }
+    @GetMapping("/get/numByYear/{year}")
+    public Object getAmountOfApplicantsByYear(@PathVariable("year") int year){
+        return service.getAmountOfApplicantsByYear(year) ;
+    }
+    @GetMapping("/get/numBySpecialty/{specialty}")
+    public Object getAmountOfApplicantsBySpecialty(@PathVariable("specialty") String specialty){
+        return service.getAmountOfApplicantsBySpecialty(specialty) ;
+    }
+
+    @GetMapping("/get/bySpecialty/{specialty}")
+    public Object getApplicantsBySpecialty(@PathVariable("specialty") String specialty){
+        return service.getApplicantsBySpecialty(specialty) ;
+    }
+
 }
 

@@ -39,4 +39,9 @@ public class GroupServiceImpl implements IGroupService {
     public List<Group> getAll() {
         return repository.findAll();
     }
+
+    public List<Group> getByNumber(int number) {
+        return repository.findAllByNumberEquals(number);
+    }
+
 }

@@ -39,4 +39,14 @@ public class SpecialtyServiceImpl implements ISpecialtyService {
     public List<Specialty> getAll() {
         return repository.findAll();
     }
+
+    public List<Specialty> getByPassingScore(double score){
+        return repository.findAllByPassingScoreEquals(score);
+    }
+    public List<Specialty> getByPassingScoreGte(double score){
+        return repository.findAllByPassingScoreGreaterThanEqual(score);
+    }
+    public List<Specialty> getByPassingScoreLte(double score){
+        return repository.findAllByPassingScoreLessThanEqual(score);
+    }
 }
