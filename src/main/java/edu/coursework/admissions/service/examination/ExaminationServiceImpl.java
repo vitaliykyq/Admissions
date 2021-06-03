@@ -44,4 +44,7 @@ public class ExaminationServiceImpl implements IExaminationService {
     public List<Examination> getAll() {
         return repository.findAll();
     }
+
+
+
 }

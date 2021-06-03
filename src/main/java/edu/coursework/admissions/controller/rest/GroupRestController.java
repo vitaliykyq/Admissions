@@ -51,5 +51,9 @@ public class GroupRestController {
         return service.update(group);
     }
 
+    @GetMapping("/get/number/{number}")
+    public List<Group> getByNumber(@PathVariable("number") int number){
+        return service.getByNumber(number);
+    }
 }
 

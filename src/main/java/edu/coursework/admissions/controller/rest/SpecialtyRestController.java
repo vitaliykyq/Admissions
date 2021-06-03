@@ -51,5 +51,17 @@ public class SpecialtyRestController {
         return service.update(specialty);
     }
 
+    @GetMapping("/get/passingScore/{score}")
+    public List<Specialty> getByPassingScore(@PathVariable("score") double score){
+        return service.getByPassingScore(score);
+    }
+    @GetMapping("/get/passingScoreGte/{score}")
+    public List<Specialty> getByPassingScoreGte(@PathVariable("score") double score){
+        return service.getByPassingScoreGte(score);
+    }
+    @GetMapping("/get/passingScoreLte/{score}")
+    public List<Specialty> getByPassingScoreLte(@PathVariable("score") double score){
+        return service.getByPassingScoreLte(score);
+    }
 }
 

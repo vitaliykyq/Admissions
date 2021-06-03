@@ -14,27 +14,26 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Specialty")
+@Document(collection = "specialty")
 public class Specialty {
     @Id
     private String id;
 
     private String name;
-    private List<Examination> requiredExamList;
+    private List<String> requiredExamList;
     private double passingScore;
 
     private Date created_at;
     private Date modified_at;
     private String description;
 
-    public Specialty(String id, String name, List<Examination> requiredExamList, double passingScore) {
+    public Specialty(String id, String name, List<String> requiredExamList, double passingScore) {
         this.id = id;
         this.name = name;
         this.requiredExamList = requiredExamList;

@@ -9,6 +9,7 @@ package edu.coursework.admissions.controller.rest;
 */
 
 import edu.coursework.admissions.model.Person;
+import edu.coursework.admissions.model.Specialty;
 import edu.coursework.admissions.model.Teacher;
 import edu.coursework.admissions.service.person.PersonServiceImpl;
 import edu.coursework.admissions.service.teacher.TeacherServiceImpl;
@@ -51,5 +52,13 @@ public class TeacherRestController {
         return service.update(teacher);
     }
 
+    @GetMapping("/get/passingScoreLte/{profesion}")
+    public List<Teacher> getByProfession(@PathVariable("profesion") String profesion){
+        return service.getByProfession(profesion);
+    }
+    @GetMapping("/get/passingScoreLte/{experience}")
+    public List<Teacher> getByPassingScoreLte(@PathVariable("experience") int experience){
+        return service.getByWorkExperience(experience);
+    }
 }
 

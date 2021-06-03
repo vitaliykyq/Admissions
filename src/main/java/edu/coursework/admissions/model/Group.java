@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Group")
+@Document(collection = "group")
 public class Group {
 @Id
     private String id;

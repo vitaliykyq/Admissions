@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Teacher")
+@Document(collection = "teacher")
 public class Teacher {
     @Id
     private String id;
