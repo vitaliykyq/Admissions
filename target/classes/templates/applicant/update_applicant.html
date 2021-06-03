@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Applicant</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body style="text-align: center" onclick="checkedTable()">
+<div>
+    <div>
+        <form action="#" th:action="@{/ui/applicants/update}" th:object="${applicant}"
+              method="POST">
+
+            <h1>Add Applicant</h1>
+
+                <table class="edit">
+                    <tr>
+                        <td><label>Id</label></td>
+                        <td>
+                            <div class="input">
+                                <input th:field="*{id}" onclick="checkedInput()" readonly required/>
+                                <div class="border-line"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Person</label></td>
+                        <td>
+                            <div class="input">
+                                <select th:field="*{person.id}" onclick="checkedInput()">
+                                    <option th:each="personIdList: ${persons}"
+                                            th:value="${personIdList.id}" th:text="${personIdList.firstName}">
+                                    </option>
+                                </select>
+                                <div class="border-line"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Examination List</label></td>
+                        <td>
+                            <div class="input">
+                                <select multiple th:field="*{examinationList}" onclick="checkedInput()">
+                                    <option th:each="examinations: ${examination}"
+                                            th:value="${examinations.id}" th:text="${examinations.name}">
+                                    </option>
+                                </select>
+                                <div class="border-line"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td><label>Document</label></td>
+                        <td>
+                            <div class="input">
+                                <select th:field="*{documents.id}" onclick="checkedInput()">
+                                    <option th:each="documents: ${document}"
+                                            th:value="${documents.id}" th:text="${documents.certificate}">
+                                    </option>
+                                </select>
+                                <div class="border-line"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Specialty</label></td>
+                        <td>
+                            <div class="input">
+                                <select th:field="*{specialty.id}" onclick="checkedInput()">
+                                    <option th:each="specialtyIdList: ${specialty}"
+                                            th:value="${specialtyIdList.id}" th:text="${specialtyIdList.name}">
+                                    </option>
+                                </select>
+                                <div class="border-line"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Form of study</label></td>
+                        <td>
+                            <div class="input">
+                                <input th:field="*{formOfStudy}" onclick="checkedInput()" required/>
+                                <div class="border-line"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+            </table>
+            <br>
+            <br>
+            <div class="control">
+                <div class="buttonBack">
+                    <a th:href = "@{/ui/applicants/get/all}" class="containerButton">Back</a>
+                </div>
+                <button type="submit">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+<script>
+    let table = document.querySelector(".edit");
+    let check = false;
+
+    function checkedTable(){
+        table.setAttribute("class", "edit");
+        if(check){
+            table.setAttribute("class", "edit border");
+        }
+        check = false;
+    }
+
+    function  checkedInput(){
+        check = true;
+    }
+</script>
+
+</html>

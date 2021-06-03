@@ -27,7 +27,6 @@ public class Teacher {
     private String id;
 
     private Person person;
-    private List<Examination> availableExamList;
     private String profession;
     private int workExperience;
 

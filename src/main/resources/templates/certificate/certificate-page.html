@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate List</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+
+
+<div class="container">
+    <table class="responsive-table">
+        <caption>List Certificate</caption>
+        <thead>
+
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Ukrainian</th>
+            <th scope="col">Ukrainian literature</th>
+            <th scope="col">World literature</th>
+            <th scope="col">English</th>
+            <th scope="col">Physics</th>
+            <th scope="col">Biology</th>
+            <th scope="col">Algebra</th>
+            <th scope="col">Geometry</th>
+            <th scope="col">Chemistry</th>
+            <th scope="col">Geography</th>
+            <th scope="col">History</th>
+            <th scope="col">CreatedAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col" colspan="2">OPTIONS</th>
+        </tr>
+
+
+        </thead>
+
+        <tbody>
+        <tr th:each="certificates: ${certificate}">
+            <td th:text="${certificates.id}" style="word-break: break-all;"></td>
+            <td th:text="${certificates.ukrainian}"></td>
+            <td th:text="${certificates.ukrainianLiterature}"></td>
+            <td th:text="${certificates.worldLiterature}"></td>
+            <td th:text="${certificates.english}"></td>
+            <td th:text="${certificates.physics}"></td>
+            <td th:text="${certificates.biology}"></td>
+            <td th:text="${certificates.algebra}"></td>
+            <td th:text="${certificates.geometry}"></td>
+            <td th:text="${certificates.chemistry}"></td>
+            <td th:text="${certificates.geography}"></td>
+            <td th:text="${certificates.history}"></td>
+            <td th:text="${certificates.created_at}"></td>
+            <td th:text="${certificates.modified_at}"></td>
+            <td class="options">
+                <a  th:href="@{/ui/certificates/delete/{id}(id=${certificates.id})}">
+                    <button class="first">Delete</button>
+                </a>
+                <a th:href="@{/ui/certificates/showUpdateForm/{id}(id=${certificates.id})}">
+                    <button class="last">Edit</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+    <br>
+
+    <div style="text-align: center">
+        <a th:href = "@{/ui/certificates/showNewCertificatesForm}" class="containerButton">Add</a>
+    </div>
+</div>
+</body>
+<script>
+    $('button').on('click', function(){
+        $('body').toggleClass('open');
+    });
+
+</script>
+
+</html>

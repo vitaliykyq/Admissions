@@ -11,6 +11,7 @@ package edu.coursework.admissions.service.person;
 import edu.coursework.admissions.dao.person.impls.PersonDAOImpl;
 import edu.coursework.admissions.data.FakeData;
 import edu.coursework.admissions.model.Person;
+import edu.coursework.admissions.model.Teacher;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import edu.coursework.admissions.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +35,18 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public Person create(Person person) {
+        person.setCreated_at(new Date());
         return repository.save(person);
     }
 
     @Override
     public Person update(Person person) {
         person.setModified_at(new Date());
-        return repository.save(person);
+        person.setCreated_at(repository.findById(person.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(person);
+        return person;
     }
 
     @Override

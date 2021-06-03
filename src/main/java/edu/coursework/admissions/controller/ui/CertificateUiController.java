@@ -50,7 +50,7 @@ public class CertificateUiController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Certificate certificate = service.getById(id);
         model.addAttribute("certificate",certificate);
-        return "person/update_person";
+        return "certificate/update_certificate";
     }
     @PostMapping("/update")
     public String update(Model model, @ModelAttribute("certificate") @RequestBody Certificate certificate) {
@@ -72,7 +72,7 @@ public class CertificateUiController {
 
         // call delete employee method
         this.service.delete(id);
-        return "redirect:/ui/persons/get/all";
+        return "redirect:/ui/certificates/get/all";
     }
 }
 

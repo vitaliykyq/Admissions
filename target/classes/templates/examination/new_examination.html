@@ -2,36 +2,46 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Teacher</title>
+    <title>Add Examination</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
 </head>
 <body style="text-align: center" onclick="checkedTable()">
 <div>
     <div>
-        <form action="#" th:action="@{/ui/teachers/add}" th:object="${teacher}"
+        <form action="#" th:action="@{/ui/examinations/add}" th:object="${examination}"
               method="POST">
-            <h1>Add Teacher</h1>
+            <h1>Add Examination</h1>
 
             <table class="edit">
                 <tr>
-                    <td><label>Person</label></td>
+                    <td><label>Name</label></td>
                     <td>
                         <div class="input">
-                                <select th:field="*{person.id}" onclick="checkedInput()">
-                                    <option th:each="personIdList: ${personIdList}"
-                                            th:value="${personIdList.id}" th:text="${personIdList.firstName}">ID
-                                    </option>
-                                </select>
+                            <input th:field="*{name}" onclick="checkedInput()" required/>
                             <div class="border-line"></div>
                         </div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td><label>Profession</label></td>
+                    <td><label>Teacher List</label></td>
                     <td>
                         <div class="input">
-                            <input th:field="*{profession}" onclick="checkedInput()" required/>
+                            <select multiple th:field="*{teacherList}" onclick="checkedInput()">
+                                <option th:each="teacherIdList: ${teacherIdList}"
+                                        th:value="${teacherIdList.id}" th:text="${teacherIdList.profession}">
+                                </option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Exam Duration</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{examDuration}" type="number" onclick="checkedInput()" required/>
                             <div class="border-line"></div>
                         </div>
                     </td>
@@ -40,7 +50,7 @@
                     <td><label>Work experience</label></td>
                     <td>
                         <div class="input">
-                            <input th:field="*{workExperience}" type="number" onclick="checkedInput()" required/>
+                            <input th:field="*{address}" onclick="checkedInput()" required/>
                             <div class="border-line"></div>
                         </div>
                     </td>
@@ -56,7 +66,7 @@
             </div>
         </form>
 
-
+        <br>
     </div>
 </div>
 </body>

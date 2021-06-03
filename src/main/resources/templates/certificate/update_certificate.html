@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Certificate</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body style="text-align: center" onclick="checkedTable()">
+<div>
+    <div>
+        <form action="#" th:action="@{/ui/certificates/update}" th:object="${certificate}"
+              method="POST">
+
+            <h1>Add Certificate</h1>
+
+            <table class="edit">
+
+                <tr>
+                    <td><label>Id</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{id}" onclick="checkedInput()" readonly required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label>Ukrainian</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{ukrainian}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Ukrainian literature</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{ukrainianLiterature}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>World literature</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{worldLiterature}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>English</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{english}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Physics</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{physics}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Biology</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{biology}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Algebra</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{algebra}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Geometry</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{geometry}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Chemistry</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{chemistry}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Geography</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{geography}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>History</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{history}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+
+
+
+            </table>
+            <br>
+            <br>
+            <div class="control">
+                <div class="buttonBack">
+                    <a th:href = "@{/ui/certificates/get/all}" class="containerButton">Back</a>
+                </div>
+                <button type="submit">Update</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+</body>
+<script>
+    let table = document.querySelector(".edit");
+    let check = false;
+
+    function checkedTable(){
+        table.setAttribute("class", "edit");
+        if(check){
+            table.setAttribute("class", "edit border");
+        }
+        check = false;
+    }
+
+    function  checkedInput(){
+        check = true;
+    }
+</script>
+
+</html>

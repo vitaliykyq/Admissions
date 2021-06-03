@@ -23,7 +23,8 @@ import java.util.List;
 @AllArgsConstructor
 @Document(collection = "Certificate")
 public class Certificate {
-@Id
+
+    @Id
     private String id;
 
     private double ukrainian;

@@ -31,6 +31,8 @@ public class ApplicantUiController {
     @Autowired
     ApplicantServiceImpl service;
     @Autowired
+    PersonServiceImpl servicePerson;
+    @Autowired
     ExaminationServiceImpl serviceExamination;
     @Autowired
     DocumentsServiceImpl serviceDocuments;
@@ -50,6 +52,8 @@ public class ApplicantUiController {
         // create model attribute to bind form data
         Applicant applicant = new Applicant();
         model.addAttribute("applicant",applicant);
+        List<Person> persons = servicePerson.getAll();
+        model.addAttribute("persons",persons);
         List<Examination> examinations = serviceExamination.getAll();
         model.addAttribute("examination",examinations);
         List<Documents> documents = serviceDocuments.getAll();
@@ -63,6 +67,8 @@ public class ApplicantUiController {
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Applicant applicant = service.getById(id);
         model.addAttribute("applicant",applicant);
+        List<Person> persons = servicePerson.getAll();
+        model.addAttribute("persons",persons);
         List<Examination> examinations = serviceExamination.getAll();
         model.addAttribute("examination",examinations);
         List<Documents> documents = serviceDocuments.getAll();
