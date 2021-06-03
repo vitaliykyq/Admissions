@@ -12,11 +12,8 @@
 package edu.coursework.admissions.controller.ui;
 
 import edu.coursework.admissions.model.Department;
-import edu.coursework.admissions.model.Person;
 import edu.coursework.admissions.model.Specialty;
 import edu.coursework.admissions.service.department.DepartmentServiceImpl;
-import edu.coursework.admissions.service.documents.DocumentsServiceImpl;
-import edu.coursework.admissions.service.person.PersonServiceImpl;
 import edu.coursework.admissions.service.specialty.SpecialtyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +35,7 @@ public class DepartmentUiController {
     @RequestMapping("/get/all")
     public String showAll(Model model){
         List<Department> departments = service.getAll();
-        model.addAttribute("department",departments);
+        model.addAttribute("department", departments);
         return "department/department-page";
     }
 
@@ -71,8 +68,6 @@ public class DepartmentUiController {
             return "redirect:/ui/departments/get/all";
 
     }
-
-
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable (value = "id") String id) {
