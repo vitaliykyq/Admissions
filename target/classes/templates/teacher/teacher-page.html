@@ -11,20 +11,26 @@
 <nav>
     <ul class="menu">
         <li
+                data-text="Requests"
+                th:href = "@{/ui/requests/}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Requests
+        </li>
+        <li
                 data-text="Applicant"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/applicants/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             Applicant
         </li>
         <li
                 data-text="Certificate"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/certificates/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             Certificate
         </li>
         <li
                 data-text="Department"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/departments/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             Department
         </li>
@@ -36,13 +42,13 @@
         </li>
         <li
                 data-text="Faculty"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/faculties/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             Faculty
         </li>
         <li
                 data-text="Group"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/groups/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             Group
         </li>
@@ -54,7 +60,7 @@
         </li>
         <li
                 data-text="Specialty"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/specialties/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             Specialty
         </li>
@@ -66,7 +72,7 @@
         </li>
         <li
                 data-text="University"
-                th:href = "@{https://www.inksystem.biz/uploaded/img/article/error-5100.jpg}"
+                th:href = "@{/ui/universities/get/all}"
                 onclick="window.location.href = this.getAttribute('href')">
             University
         </li>

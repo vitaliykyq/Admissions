@@ -457,34 +457,37 @@ ul.menu li:hover:after {
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
 .open ul.menu li:nth-child(1) {
-    transition-delay: 0.75s;
+    transition-delay: 0.70s;
 }
 .open ul.menu li:nth-child(2) {
-    transition-delay: 0.85s;
+    transition-delay: 0.75s;
 }
 .open ul.menu li:nth-child(3) {
-    transition-delay: 0.95s;
+    transition-delay: 0.80s;
 }
 .open ul.menu li:nth-child(4) {
-    transition-delay: 1.05s;
+    transition-delay: 0.85s;
 }
 .open ul.menu li:nth-child(5) {
-    transition-delay: 1.15s;
+    transition-delay: 0.90s;
 }
 .open ul.menu li:nth-child(6) {
-    transition-delay: 1.25s;
+    transition-delay: 0.95s;
 }
 .open ul.menu li:nth-child(7) {
-    transition-delay: 1.35s;
+    transition-delay: 1s;
 }
 .open ul.menu li:nth-child(8) {
-    transition-delay: 1.45s;
+    transition-delay: 1.05s;
 }
 .open ul.menu li:nth-child(9) {
-    transition-delay: 1.55s;
+    transition-delay: 1.10s;
 }
 .open ul.menu li:nth-child(10) {
-    transition-delay: 1.65s;
+    transition-delay: 1.15s;
+}
+.open ul.menu li:nth-child(11) {
+    transition-delay: 1.20s;
 }
 
 article {

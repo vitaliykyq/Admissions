@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Group List</title>
+    <title>Document List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
@@ -80,17 +80,15 @@
     </ul>
 </nav>
 
-
 <div class="container">
     <table class="responsive-table">
-        <caption>List Group</caption>
+        <caption>List Document</caption>
         <thead>
 
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Number</th>
-            <th scope="col">Applicant List</th>
-            <th scope="col">Examination</th>
+            <th scope="col">Certificate</th>
+            <th scope="col">isApplication</th>
             <th scope="col">CreatedAt</th>
             <th scope="col">ModifiedAt</th>
             <th scope="col" colspan="2">OPTIONS</th>
@@ -100,24 +98,22 @@
         </thead>
 
         <tbody>
-        <tr th:each="groups: ${group}">
-            <td th:text="${groups.id}"></td>
-            <td th:text="${groups.number}"></td>
+        <tr th:each="documents: ${document}">
+            <td th:text="${documents.id}"></td>
             <td>
-                <ol>
-                    <li th:each="applicantListId: ${groups.applicantList}">
-                        <span th:text="${applicantListId.formOfStudy}"></span>
-                    </li>
-                </ol>
+                <a
+                        th:text="${documents.certificate.id}"
+                        th:href = "@{/ui/certificates/get/all}"
+                ></a>
             </td>
-            <td th:text="${groups.examination}"></td>
-            <td th:text="${groups.created_at}"></td>
-            <td th:text="${groups.modified_at}"></td>
+            <td th:text="${documents.isApplication}"></td>
+            <td th:text="${documents.created_at}"></td>
+            <td th:text="${documents.modified_at}"></td>
             <td class="options">
-                <a  th:href="@{/ui/groups/delete/{id}(id=${groups.id})}">
+                <a  th:href="@{/ui/documents/delete/{id}(id=${documents.id})}">
                     <button class="first">Delete</button>
                 </a>
-                <a th:href="@{/ui/groups/showUpdateForm/{id}(id=${groups.id})}">
+                <a th:href="@{/ui/documents/showUpdateForm/{id}(id=${documents.id})}">
                     <button class="last">Edit</button>
                 </a>
             </td>
@@ -128,7 +124,7 @@
     <br>
 
     <div style="text-align: center">
-        <a th:href = "@{/ui/groups/showNewGroupForm}" class="containerButton">Add</a>
+        <a th:href = "@{/ui/documents/showNewDocumentForm}" class="containerButton">Add</a>
     </div>
 </div>
 </body>

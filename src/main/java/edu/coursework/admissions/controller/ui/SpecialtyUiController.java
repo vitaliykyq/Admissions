@@ -47,8 +47,6 @@ public class SpecialtyUiController {
         // create model attribute to bind form data
         Specialty specialty = new Specialty();
         model.addAttribute("specialty",specialty);
-        List<Examination> examinations = serviceExamination.getAll();
-        model.addAttribute("examination",examinations);
 
         return "specialty/new_specialty";
     }

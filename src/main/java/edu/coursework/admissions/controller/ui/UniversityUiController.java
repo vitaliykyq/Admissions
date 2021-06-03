@@ -45,7 +45,7 @@ public class UniversityUiController {
         return "university/university-page";
     }
 
-    @GetMapping("/showNewPersonForm")
+    @GetMapping("/showNewUniversityForm")
     public String showNewStadiumForm(Model model) {
         // create model attribute to bind form data
         University university = new University();

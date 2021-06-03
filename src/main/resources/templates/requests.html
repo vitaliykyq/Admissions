@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Group List</title>
+    <title>Requests</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
@@ -80,63 +80,11 @@
     </ul>
 </nav>
 
-
-<div class="container">
-    <table class="responsive-table">
-        <caption>List Group</caption>
-        <thead>
-
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Number</th>
-            <th scope="col">Applicant List</th>
-            <th scope="col">Examination</th>
-            <th scope="col">CreatedAt</th>
-            <th scope="col">ModifiedAt</th>
-            <th scope="col" colspan="2">OPTIONS</th>
-        </tr>
-
-
-        </thead>
-
-        <tbody>
-        <tr th:each="groups: ${group}">
-            <td th:text="${groups.id}"></td>
-            <td th:text="${groups.number}"></td>
-            <td>
-                <ol>
-                    <li th:each="applicantListId: ${groups.applicantList}">
-                        <span th:text="${applicantListId.formOfStudy}"></span>
-                    </li>
-                </ol>
-            </td>
-            <td th:text="${groups.examination}"></td>
-            <td th:text="${groups.created_at}"></td>
-            <td th:text="${groups.modified_at}"></td>
-            <td class="options">
-                <a  th:href="@{/ui/groups/delete/{id}(id=${groups.id})}">
-                    <button class="first">Delete</button>
-                </a>
-                <a th:href="@{/ui/groups/showUpdateForm/{id}(id=${groups.id})}">
-                    <button class="last">Edit</button>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-
-    </table>
-    <br>
-
-    <div style="text-align: center">
-        <a th:href = "@{/ui/groups/showNewGroupForm}" class="containerButton">Add</a>
-    </div>
-</div>
+<h1>Requests</h1>
 </body>
 <script>
     $('button').on('click', function(){
         $('body').toggleClass('open');
     });
-
 </script>
-
 </html>

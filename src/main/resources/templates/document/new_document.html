@@ -2,45 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Specialty</title>
+    <title>Add Document</title>
     <link  th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body style="text-align: center" onclick="checkedTable()">
 <div>
     <div>
-        <form action="#" th:action="@{/ui/specialties/add}" th:object="${specialty}"
+        <form action="#" th:action="@{/ui/documents/add}" th:object="${document}"
               method="POST">
 
-            <h1>Add Specialty</h1>
+            <h1>Add Document</h1>
 
             <table class="edit">
                 <tr>
-                    <td><label>Name</label></td>
+                    <td><label>Certificate</label></td>
                     <td>
                         <div class="input">
-                            <input th:field="*{name}" onclick="checkedInput()" required/>
-                            <div class="border-line"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Applicant List</label></td>
-                    <td>
-                        <div class="input">
-                            <select multiple th:field="*{requiredExamList}" onclick="checkedInput()">
-                                <option value="exam1">Exam1</option>
-                                <option value="exam2">Exam2</option>
-                                <option value="exam3">Exam3</option>
+                            <select th:field="*{certificate.id}" onclick="checkedInput()">
+                                <option th:each="certificateIdList: ${certificate}"
+                                        th:value="${certificateIdList.id}" th:text="${certificateIdList.id}">
+                                </option>
                             </select>
                             <div class="border-line"></div>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label>Passing Score</label></td>
+                    <td><label>isApplication</label></td>
                     <td>
                         <div class="input">
-                            <input th:field="*{passingScore}" onclick="checkedInput()" required/>
+                            <select th:field="*{isApplication}" onclick="checkedInput()">
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
                             <div class="border-line"></div>
                         </div>
                     </td>
@@ -53,7 +47,7 @@
 
             <div class="control">
                 <div class="buttonBack">
-                    <a th:href = "@{/ui/specialties/get/all}" class="containerButton">Back</a>
+                    <a th:href = "@{/ui/documents/get/all}" class="containerButton">Back</a>
                 </div>
                 <button type="submit">Add</button>
             </div>

@@ -57,7 +57,7 @@ public class DocumentsUiController {
         model.addAttribute("document",documents);
         List<Certificate> certificates = serviceCertificate.getAll();
         model.addAttribute("certificate",certificates);
-        return "document/update_documents";
+        return "document/update_document";
     }
     @PostMapping("/update")
     public String update(Model model, @ModelAttribute("document") @RequestBody  Documents documents) {

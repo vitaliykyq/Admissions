@@ -2,7 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Group List</title>
+    <title>University List</title>
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
@@ -80,17 +80,17 @@
     </ul>
 </nav>
 
-
 <div class="container">
     <table class="responsive-table">
-        <caption>List Group</caption>
+        <caption>List University</caption>
         <thead>
 
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Number</th>
-            <th scope="col">Applicant List</th>
-            <th scope="col">Examination</th>
+            <th scope="col">Specialty List</th>
+            <th scope="col">Faculty List</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone Number</th>
             <th scope="col">CreatedAt</th>
             <th scope="col">ModifiedAt</th>
             <th scope="col" colspan="2">OPTIONS</th>
@@ -100,24 +100,29 @@
         </thead>
 
         <tbody>
-        <tr th:each="groups: ${group}">
-            <td th:text="${groups.id}"></td>
-            <td th:text="${groups.number}"></td>
+        <tr th:each="universities: ${university}">
+            <td th:text="${universities.id}"></td>
             <td>
                 <ol>
-                    <li th:each="applicantListId: ${groups.applicantList}">
-                        <span th:text="${applicantListId.formOfStudy}"></span>
+                    <li th:each="specialtyListId: ${universities.specialtyList}">
+                        <span th:text="${specialtyListId}"></span>
                     </li>
                 </ol>
             </td>
-            <td th:text="${groups.examination}"></td>
-            <td th:text="${groups.created_at}"></td>
-            <td th:text="${groups.modified_at}"></td>
+            <td>
+                <ol>
+                    <li th:each="facultyListId: ${universities.faculties}">
+                        <span th:text="${facultyListId.name}"></span>
+                    </li>
+                </ol>
+            </td>
+            <td th:text="${universities.created_at}"></td>
+            <td th:text="${universities.modified_at}"></td>
             <td class="options">
-                <a  th:href="@{/ui/groups/delete/{id}(id=${groups.id})}">
+                <a  th:href="@{/ui/universities/delete/{id}(id=${universities.id})}">
                     <button class="first">Delete</button>
                 </a>
-                <a th:href="@{/ui/groups/showUpdateForm/{id}(id=${groups.id})}">
+                <a th:href="@{/ui/universities/showUpdateForm/{id}(id=${universities.id})}">
                     <button class="last">Edit</button>
                 </a>
             </td>
@@ -128,7 +133,7 @@
     <br>
 
     <div style="text-align: center">
-        <a th:href = "@{/ui/groups/showNewGroupForm}" class="containerButton">Add</a>
+        <a th:href = "@{/ui/universities/showNewUniversityForm}" class="containerButton">Add</a>
     </div>
 </div>
 </body>
