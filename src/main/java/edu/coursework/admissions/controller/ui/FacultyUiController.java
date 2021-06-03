@@ -42,7 +42,7 @@ public class FacultyUiController {
     public String showAll(Model model){
         List<Faculty> faculties = service.getAll();
         model.addAttribute("faculty",faculties);
-        return "person/person-page";
+        return "faculty/faculty-page";
     }
 
     @GetMapping("/showNewFacultyForm")

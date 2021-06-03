@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Department</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <table class="responsive-table">
+        <caption>List Department</caption>
+        <thead>
+
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Specialty</th>
+            <th scope="col">Head</th>
+            <th scope="col">CreatedAt</th>
+            <th scope="col">ModifiedAt</th>
+            <th scope="col" colspan="2">OPTIONS</th>
+        </tr>
+
+
+        </thead>
+
+        <tbody>
+        <tr th:each="departmens: ${department}">
+            <td th:text="${departmens.id}">ID</td>
+            <td th:text="${departmens.name}"></td>
+            <td th:text="${departmens.specialty.name}"></td>
+            <td th:text="${departmens.head}"></td>
+            <td th:text="${departmens.created_at}"></td>
+            <td th:text="${departmens.modified_at}"></td>
+            <td class="options">
+                <a th:href="@{/ui/departmens/delete/{id}(id=${departmens.id})}">
+                    <button>Delete</button>
+                </a>
+                <a th:href="@{/ui/departmens/showUpdateForm/{id}(id=${departmens.id})}">
+                    <button>Edit</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <div style="text-align: center">
+        <a th:href = "@{/ui/departmens/showNewDepartmentForm}" class="containerButton">Add</a>
+    </div>
+</div>
+</body>
+<script>
+    $('button').on('click', function(){
+        $('body').toggleClass('open');
+    });
+</script>
+</html>

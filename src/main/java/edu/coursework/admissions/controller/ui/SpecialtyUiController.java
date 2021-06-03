@@ -42,7 +42,7 @@ public class SpecialtyUiController {
         return "specialty/specialty-page";
     }
 
-    @GetMapping("/showNewPersonForm")
+    @GetMapping("/showNewSpecialtyForm")
     public String showNewStadiumForm(Model model) {
         // create model attribute to bind form data
         Specialty specialty = new Specialty();

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Person</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body style="text-align: center" onclick="checkedTable()">
+<div>
+    <div>
+        <form action="#" th:action="@{/ui/persons/update}" th:object="${person}"
+              method="POST">
+            <h1>Add Person</h1>
+
+            <table class="edit">
+                <tr>
+                    <td><label>Id</label></td>
+                    <td>
+                        <div class="input">
+                            <input readonly th:field="*{id}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{firstName}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Second Name</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{secondName}" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Year</label></td>
+                    <td>
+                        <div class="input">
+                            <input th:field="*{year}" type="number" onclick="checkedInput()" required/>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td>
+                        <div class="input">
+                            <select th:field="*{gender}">
+                                <option th:value="Чоловіча" th:text="Чоловіча"></option>
+                                <option th:value="Жіноча" th:text="Жіноча"></option>
+                            </select>
+                            <div class="border-line"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <div class="control">
+                <div class="buttonBack">
+                    <a th:href = "@{/ui/persons/get/all}" class="containerButton">Back</a>
+                </div>
+                <button type="submit">Update</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+</body>
+<script>
+    let table = document.querySelector(".edit");
+    let check = false;
+
+    function checkedTable(){
+        table.setAttribute("class", "edit");
+        if(check){
+            table.setAttribute("class", "edit border");
+        }
+        check = false;
+    }
+
+    function  checkedInput(){
+        check = true;
+    }
+</script>
+
+
+</html>

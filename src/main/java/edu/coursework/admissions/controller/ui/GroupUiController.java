@@ -45,7 +45,7 @@ public class GroupUiController {
         return "group/group-page";
     }
 
-    @GetMapping("/showNewPersonForm")
+    @GetMapping("/showNewGroupForm")
     public String showNewStadiumForm(Model model) {
         // create model attribute to bind form data
         Group group = new Group();
