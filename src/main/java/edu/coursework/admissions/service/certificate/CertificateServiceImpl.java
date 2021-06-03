@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.certificate;
 
+import edu.coursework.admissions.model.Applicant;
 import edu.coursework.admissions.model.Certificate;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import edu.coursework.admissions.repository.CertificateRepository;
@@ -19,13 +20,18 @@ public class CertificateServiceImpl implements ICertificateService {
 
     @Override
     public Certificate create(Certificate certificate) {
+        certificate.setCreated_at(new Date());
         return repository.save(certificate);
     }
 
     @Override
     public Certificate update(Certificate certificate) {
         certificate.setModified_at(new Date());
-        return repository.save(certificate);
+        certificate.setCreated_at(repository.findById(certificate.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(certificate);
+        return certificate;
     }
 
     @Override

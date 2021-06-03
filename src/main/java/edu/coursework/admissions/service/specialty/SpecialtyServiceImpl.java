@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.specialty;
 
+import edu.coursework.admissions.model.Group;
 import edu.coursework.admissions.model.Specialty;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import edu.coursework.admissions.repository.SpecialtyRepository;
@@ -20,13 +21,18 @@ public class SpecialtyServiceImpl implements ISpecialtyService {
 
     @Override
     public Specialty create(Specialty specialty) {
+        specialty.setCreated_at(new Date());
         return repository.save(specialty);
     }
 
     @Override
     public Specialty update(Specialty specialty) {
         specialty.setModified_at(new Date());
-        return repository.save(specialty);
+        specialty.setCreated_at(repository.findById(specialty.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(specialty);
+        return specialty;
     }
 
     @Override

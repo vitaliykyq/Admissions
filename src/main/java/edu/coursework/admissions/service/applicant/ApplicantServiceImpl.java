@@ -1,6 +1,7 @@
 package edu.coursework.admissions.service.applicant;
 
 import edu.coursework.admissions.model.Applicant;
+import edu.coursework.admissions.model.Teacher;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,18 @@ public class ApplicantServiceImpl implements IApplicantService {
 
     @Override
     public Applicant create(Applicant applicant) {
+        applicant.setCreated_at(new Date());
         return repository.save(applicant);
     }
 
     @Override
     public Applicant update(Applicant applicant) {
         applicant.setModified_at(new Date());
-        return repository.save(applicant);
+        applicant.setCreated_at(repository.findById(applicant.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(applicant);
+        return applicant;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.group;
 
+import edu.coursework.admissions.model.Faculty;
 import edu.coursework.admissions.model.Group;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import edu.coursework.admissions.repository.GroupRepository;
@@ -20,13 +21,18 @@ public class GroupServiceImpl implements IGroupService {
 
     @Override
     public Group create(Group group) {
+        group.setCreated_at(new Date());
         return repository.save(group);
     }
 
     @Override
     public Group update(Group group) {
         group.setModified_at(new Date());
-        return repository.save(group);
+        group.setCreated_at(repository.findById(group.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(group);
+        return group;
     }
 
     @Override

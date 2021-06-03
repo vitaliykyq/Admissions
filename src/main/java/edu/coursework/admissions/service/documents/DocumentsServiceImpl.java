@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.documents;
 
+import edu.coursework.admissions.model.Department;
 import edu.coursework.admissions.model.Documents;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import edu.coursework.admissions.repository.DocumentsRepository;
@@ -19,13 +20,18 @@ public class DocumentsServiceImpl implements IDocumentsService {
 
     @Override
     public Documents create(Documents documents) {
+        documents.setCreated_at(new Date());
         return repository.save(documents);
     }
 
     @Override
     public Documents update(Documents documents) {
         documents.setModified_at(new Date());
-        return repository.save(documents);
+        documents.setCreated_at(repository.findById(documents.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(documents);
+        return documents;
     }
 
     @Override

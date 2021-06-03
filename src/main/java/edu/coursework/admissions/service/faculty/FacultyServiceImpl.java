@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.faculty;
 
+import edu.coursework.admissions.model.Documents;
 import edu.coursework.admissions.model.Faculty;
 import edu.coursework.admissions.repository.ApplicantRepository;
 import edu.coursework.admissions.repository.FacultyRepository;
@@ -20,13 +21,18 @@ public class FacultyServiceImpl implements IFacultyService {
 
     @Override
     public Faculty create(Faculty faculty) {
+        faculty.setCreated_at(new Date());
         return repository.save(faculty);
     }
 
     @Override
     public Faculty update(Faculty faculty) {
         faculty.setModified_at(new Date());
-        return repository.save(faculty);
+        faculty.setCreated_at(repository.findById(faculty.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(faculty);
+        return faculty;
     }
 
     @Override

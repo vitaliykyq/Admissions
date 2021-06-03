@@ -1,5 +1,6 @@
 package edu.coursework.admissions.service.university;
 
+import edu.coursework.admissions.model.Specialty;
 import edu.coursework.admissions.model.University;
 import edu.coursework.admissions.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,18 @@ public class UniversityServiceImpl implements IUniversityService {
 
     @Override
     public University create(University university) {
+        university.setCreated_at(new Date());
         return repository.save(university);
     }
 
     @Override
     public University update(University university) {
         university.setModified_at(new Date());
-        return repository.save(university);
+        university.setCreated_at(repository.findById(university.getId())
+                .orElse(null)
+                .getCreated_at());
+        repository.save(university);
+        return university;
     }
 
     @Override
