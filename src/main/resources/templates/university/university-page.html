@@ -105,7 +105,7 @@
             <td>
                 <ol>
                     <li th:each="specialtyListId: ${universities.specialtyList}">
-                        <span th:text="${specialtyListId}"></span>
+                        <span th:text="${specialtyListId.name}"></span>
                     </li>
                 </ol>
             </td>
@@ -116,6 +116,8 @@
                     </li>
                 </ol>
             </td>
+            <td th:text="${universities.address}"></td>
+            <td th:text="${universities.phoneNumber}"></td>
             <td th:text="${universities.created_at}"></td>
             <td th:text="${universities.modified_at}"></td>
             <td class="options">

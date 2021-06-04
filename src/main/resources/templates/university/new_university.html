@@ -18,8 +18,8 @@
                     <td><label>Specialty List</label></td>
                     <td>
                         <div class="input">
-                            <select id="test1" multiple th:field="*{specialtyList}" onclick="checkedInput()">
-                                <option for="test1" th:each="specialtyIdList: ${specialty}"
+                            <select multiple th:field="*{specialtyList}" onclick="checkedInput()">
+                                <option th:each="specialtyIdList: ${specialty}"
                                         th:value="${specialtyIdList.id}" th:text="${specialtyIdList.name}">
                                 </option>
                             </select>
@@ -32,7 +32,7 @@
                     <td><label>Faculty List</label></td>
                     <td>
                         <div class="input">
-                            <select multiple th:field="*{specialtyList}" onclick="checkedInput()">
+                            <select multiple th:field="*{faculties}" onclick="checkedInput()">
                                 <option th:each="facultyIdList: ${faculty}"
                                         th:value="${facultyIdList.id}" th:text="${facultyIdList.name}">
                                 </option>
