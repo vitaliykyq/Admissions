@@ -44,16 +44,16 @@ public class DepartmentUiController {
         // create model attribute to bind form data
         Department department = new Department();
         model.addAttribute("department",department);
-        List<Specialty> specialties = serviceSpecialty.getAll();
-        model.addAttribute("specialty",specialties);
+        List<Specialty> specialtyIdList = serviceSpecialty.getAll();
+        model.addAttribute("specialtyIdList", specialtyIdList);
         return "department/new_department";
     }
     @GetMapping("/showUpdateForm/{id}")
     public String showUpdateForm(@PathVariable (value="id") String id, Model model){
         Department department = service.getById(id);
         model.addAttribute("department",department);
-        List<Specialty> specialties = serviceSpecialty.getAll();
-        model.addAttribute("specialty",specialties);
+        List<Specialty> specialtyIdList = serviceSpecialty.getAll();
+        model.addAttribute("specialtyIdList", specialtyIdList);
         return "department/update_department";
     }
     @PostMapping("/update")
