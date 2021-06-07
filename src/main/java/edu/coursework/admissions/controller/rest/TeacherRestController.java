@@ -52,13 +52,5 @@ public class TeacherRestController {
         return service.update(teacher);
     }
 
-    @GetMapping("/get/passingScoreLte/{profesion}")
-    public List<Teacher> getByProfession(@PathVariable("profesion") String profesion){
-        return service.getByProfession(profesion);
-    }
-    @GetMapping("/get/passingScoreLte/{experience}")
-    public List<Teacher> getByPassingScoreLte(@PathVariable("experience") int experience){
-        return service.getByWorkExperience(experience);
-    }
 }
 

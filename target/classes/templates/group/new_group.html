@@ -40,7 +40,7 @@
                     <td><label>Examination</label></td>
                     <td>
                         <div class="input">
-                            <select th:field="*{examination.id}" onclick="checkedInput()">
+                            <select th:field="*{examination}" onclick="checkedInput()">
                                 <option th:each="examinationIdList: ${examination}"
                                         th:value="${examinationIdList.id}" th:text="${examinationIdList.name}">
                                 </option>

@@ -19,7 +19,7 @@ import java.util.List;
 
 /*http://localhost:8080/api/person/get/all*/
 @RestController
-@RequestMapping("api/specialty")
+@RequestMapping("/api/specialty")
 public class SpecialtyRestController {
 
     @Autowired

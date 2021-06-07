@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Requests</title>
@@ -12,52 +12,52 @@
 <nav>
     <ul class="menu">
         <li
-                data-text="Requests"
-                th:href = "@{/ui/requests/}"
+                data-text="GroupByNumber"
+                th:href = "@{/api/group/get/byNumber/{number}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Requests
+            GroupByNumber
         </li>
         <li
-                data-text="Applicant"
-                th:href = "@{/ui/applicants/get/all}"
+                data-text="ApplicantsByYear"
+                th:href = "@{/api/applicant/get/byYear/{year}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Applicant
+            ApplicantsByYear
         </li>
         <li
-                data-text="Certificate"
-                th:href = "@{/ui/certificates/get/all}"
+                data-text="ApplicantsNumByYear"
+                th:href = "@{/api/applicant/get/numByYear/{year}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Certificate
+            ApplicantsNumByYear
         </li>
         <li
-                data-text="Department"
-                th:href = "@{/ui/departments/get/all}"
+                data-text="ApplicantsNumBySpecialty"
+                th:href = "@{/api/applicant/get/numBySpecialty/{specialty}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Department
+            ApplicantsNumBySpecialty
         </li>
         <li
                 data-text="Examination"
-                th:href = "@{/ui/examinations/get/all}"
+                th:href = "@{api/applicantget/get/bySpecialty/{specialty}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Examination
+            ApplicantsBySpecialty
         </li>
         <li
-                data-text="Faculty"
-                th:href = "@{/ui/faculties/get/all}"
+                data-text="SpecialtyPassingScor"
+                th:href = "@{/api/specialty/get/passingScore/{score}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Faculty
+            SpecialtyPassingScor
         </li>
         <li
-                data-text="Group"
-                th:href = "@{/ui/groups/get/all}"
+                data-text="SpecialtyPassingScoreGte"
+                th:href = "@{/api/specialty/get/passingScoreGte/{score}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Group
+            SpecialtyPassingScoreGte
         </li>
         <li
-                data-text="Person"
-                th:href = "@{/ui/persons/get/all}"
+                data-text="SpecialtyPassingScoreLte"
+                th:href = "@{/api/specialty/get/passingScoreLte/{score}}"
                 onclick="window.location.href = this.getAttribute('href')">
-            Person
+            SpecialtyPassingScoreLte
         </li>
         <li
                 data-text="Specialty"
@@ -65,18 +65,7 @@
                 onclick="window.location.href = this.getAttribute('href')">
             Specialty
         </li>
-        <li
-                data-text="Teacher"
-                th:href = "@{/ui/teachers/get/all}"
-                onclick="window.location.href = this.getAttribute('href')">
-            Teacher
-        </li>
-        <li
-                data-text="University"
-                th:href = "@{/ui/universities/get/all}"
-                onclick="window.location.href = this.getAttribute('href')">
-            University
-        </li>
+
     </ul>
 </nav>
 
