@@ -489,6 +489,9 @@ ul.menu li:hover:after {
 .open ul.menu li:nth-child(11) {
     transition-delay: 1.20s;
 }
+.open ul.menu li:nth-child(12) {
+    transition-delay: 1.25s;
+}
 
 article {
     padding: 24px;

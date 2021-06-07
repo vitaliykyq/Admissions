@@ -7,7 +7,77 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
+<nav>
 
+    <ul class="menu">
+        <li
+                data-text="Requests"
+                th:href = "@{/ui/requests/}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Requests
+        </li>
+        <li
+                data-text="Applicant"
+                th:href = "@{/ui/applicants/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Applicant
+        </li>
+        <li
+                data-text="Certificate"
+                th:href = "@{/ui/certificates/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Certificate
+        </li>
+        <li
+                data-text="Department"
+                th:href = "@{/ui/departments/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Department
+        </li>
+        <li
+                data-text="Examination"
+                th:href = "@{/ui/examinations/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Examination
+        </li>
+        <li
+                data-text="Faculty"
+                th:href = "@{/ui/faculties/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Faculty
+        </li>
+        <li
+                data-text="Group"
+                th:href = "@{/ui/groups/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Group
+        </li>
+        <li
+                data-text="Person"
+                th:href = "@{/ui/persons/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Person
+        </li>
+        <li
+                data-text="Specialty"
+                th:href = "@{/ui/specialties/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Specialty
+        </li>
+        <li
+                data-text="Teacher"
+                th:href = "@{/ui/teachers/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            Teacher
+        </li>
+        <li
+                data-text="University"
+                th:href = "@{/ui/universities/get/all}"
+                onclick="window.location.href = this.getAttribute('href')">
+            University
+        </li>
+    </ul>
+</nav>
 
 
 <div class="container">
