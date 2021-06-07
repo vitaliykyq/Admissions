@@ -52,7 +52,7 @@ public class GroupRestController {
     }
 
     @GetMapping("/get/byNumber/{number}")
-    public List<Group> getByNumber(@PathVariable("number") int number){
+    public List<Group> getByNumber(@PathVariable("number") String number){
         return service.getByNumber(number);
     }
 }

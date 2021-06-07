@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface GroupRepository extends MongoRepository<Group, String> {
-    public List<Group> findAllByNumberEquals (int number);
+    public List<Group> findAllByNumberEquals(String number);
 
 }
