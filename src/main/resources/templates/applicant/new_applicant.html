@@ -18,7 +18,7 @@
                     <td><label>Person</label></td>
                     <td>
                         <div class="input">
-                            <select th:field="*{person.id}" onclick="checkedInput()">
+                            <select th:field="*{person}" onclick="checkedInput()">
                                 <option th:each="personIdList: ${persons}"
                                         th:value="${personIdList.id}" th:text="${personIdList.firstName}">
                                 </option>
@@ -50,7 +50,7 @@
                     <td><label>Document</label></td>
                     <td>
                         <div class="input">
-                            <select th:field="*{documents.id}" onclick="checkedInput()">
+                            <select th:field="*{documents}" onclick="checkedInput()">
                                 <option th:each="documents: ${document}"
                                         th:value="${documents.id}" th:text="${documents.certificate}">
                                 </option>
@@ -64,7 +64,7 @@
                     <td><label>Specialty</label></td>
                     <td>
                         <div class="input">
-                            <select th:field="*{specialty.id}" onclick="checkedInput()">
+                            <select th:field="*{specialty}" onclick="checkedInput()">
                                 <option th:each="specialtyIdList: ${specialty}"
                                         th:value="${specialtyIdList.id}" th:text="${specialtyIdList.name}">
                                 </option>
